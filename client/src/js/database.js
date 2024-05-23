@@ -12,7 +12,7 @@ const initdb = async () =>
     },
   });
 
-// Method to add content to the database
+// Method to add content to the database.
 export const putDb = async (content) => {
   console.log("PUT to the database");
   const jateDb = await openDB("jate", 1);
@@ -20,10 +20,10 @@ export const putDb = async (content) => {
   const store = tx.objectStore("jate");
   const request = store.put({ id: 1, content });
   const result = await request;
-  console.log("🚀 - data saved to the database", result);
+  console.log("Data saved to the database.", result);
 };
 
-// Method to get all content from the database
+// Method to get all content from the database.
 export const getDb = async () => {
   console.log("GET from the database");
   const jateDb = await openDB("jate", 1);
@@ -31,8 +31,8 @@ export const getDb = async () => {
   const store = tx.objectStore("jate");
   const request = store.getAll();
   const result = await request;
-  console.log("🚀 - data retrieved from the database", result);
-  return result;
+  console.log("Data retrieved from the database.", result);
+  return result?.value;
 };
 
 initdb();
