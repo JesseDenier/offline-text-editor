@@ -1,18 +1,23 @@
 {
   "name": "JATE",
   "version": "1.0.0",
-  "description": "",
-  "main": "server.js",
+  "description": "Offline Text Editor",
+  "main": "server/server.js",
   "scripts": {
-    "start:dev": "",
-    "start": "",
-    "server": "",
-    "build": "",
-    "install": "",
-    "client": ""
+    "dev": "concurrently \"npm run server\" \"npm run client\"",
+    "start": "node server/server.js",
+    "server": "if-env NODE_ENV=production nodemon server.js",
+    "build": "npm run build --prefix client",
+    "install": "npm install --prefix client && npm install --prefix server",
+    "client": "npm start --prefix client"
   },
-  "keywords": [],
-  "author": "",
+  "keywords": [
+    "offline",
+    "text",
+    "editor",
+    "PWA"
+  ],
+  "author": "Jesse Denier",
   "license": "ISC",
   "dependencies": {
     "express": "^4.17.1",
