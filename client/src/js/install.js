@@ -1,36 +1,43 @@
-const butInstall = document.getElementById("buttonInstall");
+//! Wrapping my install.js in a DOM load event listender confirms it loads in properly.
+document.addEventListener("DOMContentLoaded", () => {
+  const butInstall = document.getElementById("buttonInstall");
 
-let deferredPrompt;
+  let deferredPrompt;
 
-// Logic for installing the PWA
-// Add an event handler to the `beforeinstallprompt` event
-window.addEventListener("beforeinstallprompt", (event) => {
-  // Prevent Chrome 67 and earlier from automatically showing the prompt
-  event.preventDefault();
-  // Stash the event so it can be triggered later
-  deferredPrompt = event;
-  // Update UI notify the user they can add to home screen
-  butInstall.style.display = "block";
-});
+  // Logic for installing the PWA
+  // Add an event handler to the `beforeinstallprompt` event
+  window.addEventListener("beforeinstallprompt", (event) => {
+    //! Confims this function starts.
+    console.log("beforeinstallprompt event fired");
+    // Prevent Chrome 67 and earlier from automatically showing the prompt
+    event.preventDefault();
+    // Stash the event so it can be triggered later
+    deferredPrompt = event;
+    // Update UI notify the user they can add to home screen
+    butInstall.style.display = "block";
+  });
 
-// Implement a click event handler on the `butInstall` element
-butInstall.addEventListener("click", async () => {
-  if (deferredPrompt) {
-    // Show the prompt
-    deferredPrompt.prompt();
-    // Wait for the user to respond to the prompt
-    const choiceResult = await deferredPrompt.userChoice;
-    if (choiceResult.outcome === "accepted") {
-      console.log("User accepted the install prompt");
-    } else {
-      console.log("User dismissed the install prompt");
+  // Implement a click event handler on the `butInstall` element
+  butInstall.addEventListener("click", async () => {
+    //! Confims the button has been clicked.
+    console.log("Install button clicked");
+    if (deferredPrompt) {
+      // Show the prompt
+      deferredPrompt.prompt();
+      // Wait for the user to respond to the prompt
+      const choiceResult = await deferredPrompt.userChoice;
+      if (choiceResult.outcome === "accepted") {
+        console.log("User accepted the install prompt");
+      } else {
+        console.log("User dismissed the install prompt");
+      }
+      // Clear the deferredPrompt variable, as it can only be used once
+      deferredPrompt = null;
     }
-    // Clear the deferredPrompt variable, as it can only be used once
-    deferredPrompt = null;
-  }
-});
+  });
 
-// Add an handler for the `appinstalled` event
-window.addEventListener("appinstalled", (event) => {
-  console.log("App installed successfully");
+  // Add an handler for the `appinstalled` event
+  window.addEventListener("appinstalled", (event) => {
+    console.log("App installed successfully");
+  });
 });

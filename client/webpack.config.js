@@ -18,7 +18,7 @@ module.exports = () => {
       new HtmlWebpackPlugin({
         template: "./index.html",
         filename: "index.html",
-        chunks: ["main"],
+        chunks: ["main", "install"],
       }),
       new WebpackPwaManifest({
         name: "Your Offline Text Editor",
@@ -36,7 +36,6 @@ module.exports = () => {
             src: path.resolve("src/images/logo.png"),
             sizes: [96, 128, 192, 256, 384, 512],
             destination: path.join(""),
-            purpose: "any maskable",
           },
         ],
       }),
