@@ -32,7 +32,8 @@ registerRoute(
   ({ request }) =>
     request.destination === "style" ||
     request.destination === "script" ||
-    request.destination === "image",
+    request.destination === "image" ||
+    request.destination === "worker",
   // Use CacheFirst strategy for assets
   new CacheFirst({
     cacheName: "assets-cache",
