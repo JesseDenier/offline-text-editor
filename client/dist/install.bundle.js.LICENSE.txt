@@ -1,0 +1,7 @@
+/*! regenerator-runtime -- Copyright (c) 2014-present, Facebook, Inc. -- license (MIT): https://github.com/facebook/regenerator/blob/main/LICENSE */
+
+//! Confims the button has been clicked.
+
+//! Confims this function starts.
+
+//! Wrapping my install.js in a DOM load event listender confirms it loads in properly.
