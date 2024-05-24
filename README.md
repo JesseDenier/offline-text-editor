@@ -23,8 +23,8 @@ It works by creating a bundled PWA when running "npm run build" from the root fo
 
 The user has 2 options for installation:
 
-- For online only use: Simply visit xyz.com
-- For offline use: Visit xyz.com and click the install button in the top left and following the prompted steps to your liking.
+- For online only use: Simply visit https://offline-text-editor-yimx.onrender.com/
+- For offline use: Visit https://offline-text-editor-yimx.onrender.com/ and click the install button in the top left and following the prompted steps to your liking.
 
 ## Usage
 
